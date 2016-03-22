@@ -25,6 +25,8 @@ server.route({
   }
 });
 
+var links = [{id: 1,name: 'one piece'}, {id: 2,name: 'uq holder'}, {id: 3,name: 'nanatsu no taizai'}, {id: 4,name: 'berserk'}];
+
 // route qui permet de récupérer les info de la page
 server.route({
   method: 'GET',

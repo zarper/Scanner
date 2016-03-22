@@ -1,20 +1,21 @@
 const React = require('react');
 
-var listemanga = [{id: 1,name: 'one piece'}, {id: 2,name: 'uq holder'}, {id: 3,name: 'nanatsu no taizai'}, {id: 4,name: 'berserk'}];
-function selection(arr){
-  var obj = {};
-  arr.forEach(function(item){
-    obj[item.id] = '<option value=' + item.id + '>' + item.name + '</option>';
-  });
-  return obj;
-}
-
 
 module.exports = React.createClass({
  displayName: 'mangas',
+ // propTypes
  render: function() {
    return (
-
+     <select onChange={maFunc}>
+     {
+       this.props.links.map((link) => <option key={link.id} value={link.id}>{link.name}</option>)
+     }
+     </select>
    );
  }
 });
+
+
+function maFunc(e){
+  console.log(e.target.value);
+}

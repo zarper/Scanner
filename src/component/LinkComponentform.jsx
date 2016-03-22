@@ -9,13 +9,14 @@ module.exports = React.createClass({
    return (
      <form action={this.onSubmit} method="post" >
      <table>
+      <tbody>
        <tr>
           <td>
             {this.props.Text1}
             <div>
               <input type="text" name="info" id="s1" />
             </div>
-            <a href="{this.props.Lien1}"><img class="plus" src="http://www.icone-png.com/png/30/29948.png"  height="35" width="35"/></a>
+            <a href="{this.props.Lien1}"><img className="plus" src="http://www.icone-png.com/png/30/29948.png"  height="35" width="35"/></a>
             <br/>
             <br/>
             <br/>
@@ -45,7 +46,7 @@ module.exports = React.createClass({
            </select>
            </div>
            </div>
-           <a href="{this.props.lien1}"><img class="plus" src="http://www.icone-png.com/png/30/29948.png"  height="35" width="35"/></a>
+           <a href="{this.props.lien1}"><img className="plus" src="http://www.icone-png.com/png/30/29948.png"  height="35" width="35"/></a>
            <br/>
            <br/>
            <br/>
@@ -59,8 +60,10 @@ module.exports = React.createClass({
            Tri par date :<input type="radio" name="tri" id="b3" value="date" />
          </td>
        </tr>
+       </tbody>
        </table>
        <table id='table2'>
+       <tbody>
        <tr>
          <td>
            <a><input type="button" id="b4" /></a>
@@ -77,6 +80,7 @@ module.exports = React.createClass({
            <input type="button" id="b13" />
          </td>
        </tr>
+       </tbody>
        </table>
        <input type="submit" id="b14" />
        </form>
