@@ -5,10 +5,13 @@ const React = require('react');
 const parser = require('rss-parser');
 
 const Link = require('./component/LinkComponent.jsx');
-const Form = require('./component/LinkComponentform.jsx');
+const Formup = require('./component/LinkComponentupperform.jsx');
+const Formdown = require('./component/LinkComponentdownform.jsx');
+//const ScanButton = require('./component/LinkComponentformbutton.jsx');
 const MangaSelection = require('./component/mangaSelection.jsx');
+const ScanSelection = require('./component/ScanSelection.jsx');
 
-parser.parseURL('https://www.japscan.com/rss/', function(err, parsed) {
+parser.parseURL('http://www.reddit.com/.rss', function(err, parsed) {
   console.log(parsed.feed.title);
   parsed.feed.entries.forEach(function(entry) {console.log(entry.title + ':' + entry.link);})
 });
@@ -17,12 +20,16 @@ parser.parseURL('https://www.japscan.com/rss/', function(err, parsed) {
 function render(data){
   ReactDOM.render(
     <div>
-        <Form action="./sender.js"
+
+        <Formup action="./sender.js"
         Text1='Lien des flux rss'
-        text2='Liste des mangas'
-        Text4='textbox4'
-        lien1="http://www.google.fr" />
+        Text2='Liste des mangas'/>
         <MangaSelection links={data} />
+        <Formdown
+        Text3='Text3 test'
+        text4='Tri par'/>
+        <ScanSelection links={data} />
+
     </div>
 
     //<Link url='http://127.0.0.1:3000/dist/js/' data='' description='Le lien vers la page de test' />

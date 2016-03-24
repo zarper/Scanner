@@ -73565,150 +73565,70 @@ module.exports = React.createClass({
   render: function render() {
     return React.createElement(
       'form',
-      { action: this.props.sender, method: 'post' },
+      { action: this.onSubmit, method: 'post' },
       React.createElement(
         'table',
         null,
         React.createElement(
-          'tr',
+          'tbody',
           null,
           React.createElement(
-            'td',
+            'tr',
             null,
-            this.props.Text1,
             React.createElement(
-              'div',
-              null,
-              React.createElement('input', { type: 'text', name: 'info', id: 's1' })
-            ),
-            React.createElement(
-              'a',
-              { href: this.props.lien1 },
-              React.createElement('img', { 'class': 'plus', src: 'http://www.icone-png.com/png/30/29948.png', height: '35', width: '35' })
-            ),
-            React.createElement('br', null),
-            React.createElement('br', null),
-            React.createElement('br', null)
-          )
-        ),
-        React.createElement(
-          'tr',
-          null,
-          React.createElement(
-            'td',
-            null,
-            this.props.text2,
-            React.createElement(
-              'div',
+              'td',
               null,
               React.createElement(
-                'select',
-                null,
-                React.createElement(
-                  'option',
-                  { value: 'option1' },
-                  'option 1'
-                ),
-                React.createElement(
-                  'option',
-                  { value: 'option2' },
-                  'option 2'
-                ),
-                React.createElement(
-                  'option',
-                  { value: 'option3' },
-                  'option 3'
-                )
-              )
-            ),
-            React.createElement('br', null),
-            React.createElement('br', null),
-            React.createElement('br', null)
+                'a',
+                { href: '{this.props.lien1}' },
+                React.createElement('img', { className: 'plus', src: 'http://www.icone-png.com/png/30/29948.png', height: '35', width: '35' })
+              ),
+              React.createElement('br', null)
+            )
           ),
           React.createElement(
-            'td',
+            'tr',
             null,
-            this.props.text2,
             React.createElement(
-              'div',
+              'td',
               null,
-              React.createElement(
-                'div',
-                null,
-                React.createElement(
-                  'select',
-                  null,
-                  this.props.listbox
-                )
-              )
-            ),
-            React.createElement(
-              'a',
-              { href: this.props.lien1 },
-              React.createElement('img', { 'class': 'plus', src: 'http://www.icone-png.com/png/30/29948.png', height: '35', width: '35' })
-            ),
-            React.createElement('br', null),
-            React.createElement('br', null),
-            React.createElement('br', null)
-          )
-        ),
-        this.props.text4,
-        React.createElement(
-          'tr',
-          null,
-          React.createElement(
-            'td',
-            null,
-            'Tri par manga :',
-            React.createElement('input', { type: 'radio', name: 'tri', id: 'b1', value: 'manga' }),
-            '    Tri par site :',
-            React.createElement('input', { type: 'radio', name: 'tri', id: 'b2', value: 'site' }),
-            '    Tri par date :',
-            React.createElement('input', { type: 'radio', name: 'tri', id: 'b3', value: 'date' })
-          )
-        )
-      ),
-      React.createElement(
-        'table',
-        { id: 'table2' },
-        React.createElement(
-          'tr',
-          null,
-          React.createElement(
-            'td',
-            null,
-            React.createElement(
-              'a',
-              null,
-              React.createElement('input', { type: 'button', id: 'b4' })
-            ),
-            React.createElement('input', { type: 'button', id: 'b5' }),
-            React.createElement('input', { type: 'button', id: 'b6' }),
-            React.createElement('input', { type: 'button', id: 'b7' }),
-            React.createElement('input', { type: 'button', id: 'b8' })
+              this.props.text4
+            )
           ),
           React.createElement(
-            'td',
+            'tr',
             null,
-            React.createElement('input', { type: 'button', id: 'b9' }),
-            React.createElement('input', { type: 'button', id: 'b10' }),
-            React.createElement('input', { type: 'button', id: 'b11' }),
-            React.createElement('input', { type: 'button', id: 'b12' }),
-            React.createElement('input', { type: 'button', id: 'b13' })
+            React.createElement(
+              'td',
+              null,
+              'Manga ',
+              React.createElement('input', { type: 'radio', name: 'tri', id: 'b1', value: 'manga' }),
+              '    Site ',
+              React.createElement('input', { type: 'radio', name: 'tri', id: 'b2', value: 'site' }),
+              '    Date ',
+              React.createElement('input', { type: 'radio', name: 'tri', id: 'b3', value: 'date' })
+            )
           )
         )
-      ),
-      React.createElement('input', { type: 'submit', id: 'b14' })
+      )
     );
   },
 
   onSubmit: function onSubmit(e) {
     e.preventDefault();
 
+    var listemanga = [{ id: 1, name: 'one piece' }, { id: 2, name: 'uq holder' }, { id: 3, name: 'nanatsu no taizai' }, { id: 4, name: 'berserk' }];
+    var obj = {};
+    listemanga.forEach(function (item) {
+      obj[item.id] = '<option value=' + item.id + '>' + item.name + '</option>';
+    });
+    return obj;
+
     var link = {
       title: ReactDOM.findDOMNode(this.refs.title).value,
       url: ReactDOM.findDOMNode(this.refs.url).value,
-      description: ReactDOM.findDOMNode(this.refs.description).value
+      manga: ReactDOM.findDOMNode(this.refs.manga).value,
+      numscan: ReactDOM.findDOMNode(this.refs.numscan).value
     };
 
     this.props.onSubmit(link);
@@ -73719,6 +73639,117 @@ module.exports = React.createClass({
 },{"react":209}],344:[function(require,module,exports){
 'use strict';
 
+var React = require('react');
+var test = "text de test";
+
+module.exports = React.createClass({
+  displayName: 'Form',
+  render: function render() {
+    return React.createElement(
+      'form',
+      { action: this.onSubmit, method: 'post' },
+      React.createElement(
+        'table',
+        null,
+        React.createElement(
+          'tbody',
+          null,
+          React.createElement(
+            'tr',
+            null,
+            React.createElement(
+              'td',
+              null,
+              this.props.Text1,
+              React.createElement(
+                'div',
+                null,
+                React.createElement('input', { type: 'text', name: 'info', id: 's1' })
+              ),
+              React.createElement(
+                'a',
+                { href: '{this.props.Lien1}' },
+                React.createElement('img', { className: 'plus', src: 'http://www.icone-png.com/png/30/29948.png', height: '35', width: '35' })
+              ),
+              React.createElement('br', null),
+              React.createElement('br', null),
+              React.createElement('br', null)
+            )
+          ),
+          React.createElement(
+            'tr',
+            null,
+            React.createElement(
+              'td',
+              null,
+              this.props.Text2
+            )
+          )
+        )
+      )
+    );
+  } });
+
+},{"react":209}],345:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+module.exports = React.createClass({
+  displayName: 'scan',
+  // propTypes
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      this.props.links.map(function (link) {
+        return React.createElement(
+          'a',
+          { href: link.url },
+          React.createElement(
+            'button',
+            { id: link.id, key: link.id, name: link.titre, type: 'button' },
+            React.createElement('img', { src: link.image, id: link.id })
+          )
+        );
+      })
+    );
+  } });
+
+function maFunc(e) {
+  console.log(e.target.value);
+}
+
+},{"react":209}],346:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+module.exports = React.createClass({
+  displayName: 'mangas',
+  // propTypes
+  render: function render() {
+    return React.createElement(
+      'select',
+      { onChange: maFunc },
+      this.props.links.map(function (link) {
+        return React.createElement(
+          'option',
+          { key: link.id, value: link.id },
+          link.name
+        );
+      })
+    );
+  }
+});
+
+function maFunc(e) {
+  console.log(e.target.value);
+}
+
+},{"react":209}],347:[function(require,module,exports){
+'use strict';
+
 var $ = require('jquery');
 var angular = require('angular');
 var ReactDOM = require('react-dom');
@@ -73726,32 +73757,42 @@ var React = require('react');
 var parser = require('rss-parser');
 
 var Link = require('./component/LinkComponent.jsx');
-var Form = require('./component/LinkComponentform.jsx');
+var Formup = require('./component/LinkComponentupperform.jsx');
+var Formdown = require('./component/LinkComponentdownform.jsx');
+//const ScanButton = require('./component/LinkComponentformbutton.jsx');
+var MangaSelection = require('./component/mangaSelection.jsx');
+var ScanSelection = require('./component/ScanSelection.jsx');
 
-parser.parseURL('https://www.japscan.com/rss/', function (err, parsed) {
+parser.parseURL('http://www.reddit.com/.rss', function (err, parsed) {
   console.log(parsed.feed.title);
   parsed.feed.entries.forEach(function (entry) {
     console.log(entry.title + ':' + entry.link);
   });
 });
 
-console.log(document.getElementById('appcontainer'));
-ReactDOM.render(
-/*html du render*/
+function render(data) {
+  ReactDOM.render(React.createElement(
+    'div',
+    null,
+    React.createElement(Formup, { action: './sender.js',
+      Text1: 'Lien des flux rss',
+      Text2: 'Liste des mangas' }),
+    React.createElement(MangaSelection, { links: data }),
+    React.createElement(Formdown, {
+      Text3: 'Text3 test',
+      text4: 'Tri par' }),
+    React.createElement(ScanSelection, { links: data })
+  )
 
-/* Suite du render*/
-React.createElement(
-  'div',
-  null,
-  React.createElement(Form, { action: './sender.js', Text1: 'Lien des flux rss', text2: 'Liste des mangas', listbox: '<option value="option1">option 1</option><option value="option2">option 2</option><option value="option3">option 3</option>', Text4: 'textbox4',
-    lien1: 'http://www.google.fr' })
-)
+  //<Link url='http://127.0.0.1:3000/dist/js/' data='' description='Le lien vers la page de test' />
+  , document.getElementById('appcontainer'));
+}
 
-//<Link url='http://127.0.0.1:3000/dist/js/' data='' description='Le lien vers la page de test' />
-, document.getElementById('appcontainer'));
+// display the app with nothing inside
+render([]);
 
 $.get('/api/links').then(function (links) {
-  console.log(links);
+  render(links);
 });
 
-},{"./component/LinkComponent.jsx":342,"./component/LinkComponentform.jsx":343,"angular":43,"jquery":79,"react":209,"react-dom":80,"rss-parser":210}]},{},[344]);
+},{"./component/LinkComponent.jsx":342,"./component/LinkComponentdownform.jsx":343,"./component/LinkComponentupperform.jsx":344,"./component/ScanSelection.jsx":345,"./component/mangaSelection.jsx":346,"angular":43,"jquery":79,"react":209,"react-dom":80,"rss-parser":210}]},{},[347]);

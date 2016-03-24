@@ -25,7 +25,10 @@ server.route({
   }
 });
 
-var links = [{id: 1,name: 'one piece'}, {id: 2,name: 'uq holder'}, {id: 3,name: 'nanatsu no taizai'}, {id: 4,name: 'berserk'}];
+var links = [{id: 1,name: 'one piece',url: 'http://www.japscan.com/lecture-en-ligne/one-piece/820/',image: '/image/onepiece.jpg'}
+,{id: 2,name: 'uq holder',url: 'http://www.japscan.com/lecture-en-ligne/uq-holder/116/',image: '/image/uqholder.png'}
+, {id: 3,name: 'nanatsu no taizai',url: 'http://www.japscan.com/lecture-en-ligne/nanatsu-no-taizai/167/',image: '/image/nantsunotaizai.jpg'}
+, {id: 4,name: 'berserk',url: 'http://www.japscan.com/lecture-en-ligne/berserk/343/1.html',image: '/image/berserk.jpg'}];
 
 // route qui permet de récupérer les info de la page
 server.route({
