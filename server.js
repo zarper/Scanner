@@ -3,6 +3,7 @@
 const Hapi = require('hapi');
 const server = new Hapi.Server();
 const path = require('path');
+const request = require('request');
 server.connection({
   port: 3000
 });
@@ -47,6 +48,24 @@ server.route({
     console.log(request.payload);
     links.push(request.payload);
     reply().code(201);
+  }
+});
+
+// setup routes
+server.route({
+  method: 'GET',
+  path: '/api/proxy',
+  handler: function(req, reply){
+    request({
+      method: 'GET',
+      url: req.query.url
+    }, function(err, response, body){
+      if(err){
+        return reply(err);
+      }
+
+      reply(body);
+    })
   }
 });
 
